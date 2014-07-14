@@ -23,8 +23,29 @@ var scrabbleWord = function(word){
       score += 8;
     } else if (tenPointLetters.indexOf(word.charAt(i)) >= 0){
       score += 10;
-    } else { alert("you've obvilously never played this before and are trying to trick me!")
+    } else { alert("you've obviously never played this before and are trying to trick me!");
+      score = 0;
+      break;
     };
   };
   return score;
 };
+
+$(function(){
+  $("form#scrabbleInput").submit(function(event){
+    var word = $("input#input-word").val().toLowerCase();
+    if (word.split("").indexOf(" ") >= 0){
+      alert("one word at a time please!");
+
+    } else {
+    var result = scrabbleWord(word);
+      if(result){
+        $("#result").show();
+        $(".points").text(result);
+      } else {
+        $("#result").hide();
+      }
+    }
+    event.preventDefault();
+  })
+})
