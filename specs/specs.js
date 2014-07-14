@@ -8,5 +8,8 @@ describe("scrabbleWord",function(){
   it("it takes a letter from a different point value and returns its score",function(){
     scrabbleWord("d").should.equal(2);
   });
+  it("take a word and checks all the letters in the different point categories.", function(){
+    scrabbleWord("zap").should.equal(14);
+  });
 });
 
